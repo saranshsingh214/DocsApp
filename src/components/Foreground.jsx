@@ -1,8 +1,10 @@
-import React from "react";
+import React,{ useRef } from "react";
 import Card from "./Card";
-import { IoClose } from "react-icons/io5";
 
 function Foreground() {
+
+    const ref= useRef(null);
+
   const data = [
         {
             desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati.",
@@ -25,9 +27,9 @@ function Foreground() {
     ];
 
   return (
-    <div className="fixed top-0 left-0 w-full h-screen z-[3] flex flex-wrap gap-10 p-5">
+    <div ref={ref} className="fixed top-0 left-0 w-full h-screen z-[3] flex flex-wrap gap-10 p-5">
       {data.map((item,index)=>(
-        <Card data={item}/>
+        <Card data={item} reference={ref} key={index}/>
       ))}
     </div>
   );

@@ -2,10 +2,11 @@ import React from 'react'
 import { FaRegFileAlt } from "react-icons/fa";
 import { HiOutlineDownload } from "react-icons/hi";
 import { IoClose } from "react-icons/io5";
+import { motion } from "framer-motion"
 
-function Card({data}) {
+function Card({data,reference}) {
   return (
-    <div className='flex-shrink-0 relative w-60 h-72 rounded-[35px] bg-zinc-900/90 text-white px-5 py-10 overflow-hidden'>
+    <motion.div drag dragConstraints={reference} whileDrag={{scale:1.1}} dragElastic={0.2} dragTransition={{ bounceStiffness: 200, bounceDamping: 10 }} className='flex-shrink-0 relative w-60 h-72 rounded-[35px] bg-zinc-900/90 text-white px-5 py-10 overflow-hidden'>
         <FaRegFileAlt />
 
         <p className='text-sm mt-5 font-semibold leading-tight'>{data.desc}</p>
@@ -24,7 +25,7 @@ function Card({data}) {
                 </div>
             )}
         </div>
-    </div>
+    </motion.div>
   )
 }
 
